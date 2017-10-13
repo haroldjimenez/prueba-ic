@@ -1,0 +1,38 @@
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'jacoco'
+
+version = '1.0.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+   
+    jcenter()
+}
+jar{
+	manifest{
+		attributes 	'Implementation-title': 'prueba',
+					'Implementation-Version': version
+	}
+}
+
+test{
+	jacoco{
+		append = false
+		destinationFile = file("jacoco/jacocoTest.exec")
+	}
+	reports.junitXml.destination = file("jacoco/tests-results.xml")
+}
+
+jacocoTestReport.dependsOn(test)
+
+dependencies {
+
+    // Use JUnit test framework
+    testCompile 'junit:junit:4.12'
+    
+    testCompile 'org.mockito:mockito-all:1.9.5'
+}
+
