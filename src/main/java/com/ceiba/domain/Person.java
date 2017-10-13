@@ -7,8 +7,8 @@ public class Person {
     
 	public Person(String name, String lastName) {
 		super();
-		this.name = name;
-		this.lastName = lastName;
+		setName(name);
+		setLastName(lastName);
 	}
 	public String getName() {
 		return name;
