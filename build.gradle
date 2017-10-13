@@ -23,7 +23,7 @@ test{
 		append = false
 		destinationFile = file("jacoco/jacocoTest.exec")
 	}
-	reports.junitXml.destination = file("jacoco/tests-results")
+	reports.junitXml.destination = file("jacoco/test-results")
 }
 
 jacocoTestReport.dependsOn(test)
