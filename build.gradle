@@ -4,10 +4,10 @@ allprojects {
 	apply plugin: 'jacoco'
 	apply plugin: 'maven-publish'
 	apply plugin: "com.jfrog.artifactory"
-	version = '1.0.1-SNAPSHOT'
-	artifactId = 'prueba'
-
 }
+group = 'com.ceiba'
+artifactId = 'prueba'
+version = '1.0.1-SNAPSHOT'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
