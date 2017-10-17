@@ -4,7 +4,7 @@ allprojects {
 	apply plugin: 'jacoco'
 	apply plugin: 'maven-publish'
 	apply plugin: "com.jfrog.artifactory"
-	version = '1.0.1-RELEASE'
+	version = '1.0.1-SNAPSHOT'
 	artifactId = 'prueba'
 	artifactID
 }
