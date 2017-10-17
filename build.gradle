@@ -1,16 +1,16 @@
+allprojects {
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'jacoco'
+	apply plugin: 'maven-publish'
+	apply plugin: "com.jfrog.artifactory"
+	version = '1.0.1-RELEASE'
+	group = 'com.ceiba'
+}
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'jacoco'
-
-version = '1.0.0'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-repositories {
-   
-    jcenter()
-}
 jar{
 	manifest{
 		attributes 	'Implementation-title': 'prueba',
@@ -36,3 +36,54 @@ dependencies {
     testCompile 'org.mockito:mockito-all:1.9.5'
 }
 
+
+buildscript {
+    repositories {
+        maven {
+            url 'http://localhost:8081/artifactory/libs-release'
+            credentials {
+                username = "${artifactory_user}"
+                password = "${artifactory_password}"
+            }
+        }
+        jcenter()
+    }
+    
+    dependencies {
+        //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
+    }
+}
+
+artifactory {
+    contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
+    publish {
+        repository {
+            repoKey = 'gradle-release-local'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+            maven = true
+            
+        }
+         defaults {
+        	publications('mavenJava')
+        }
+    }
+	resolve {
+	    repository {
+	        repoKey = 'gradle-release'
+	        username = "${artifactory_user}"
+	        password = "${artifactory_password}"
+	        maven = true
+	        
+	    }
+	}
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+		}
+	}
+}
