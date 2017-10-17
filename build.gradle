@@ -6,7 +6,6 @@ allprojects {
 	apply plugin: "com.jfrog.artifactory"
 }
 group = 'com.ceiba'
-artifactId = 'prueba'
 version = '1.0.1-SNAPSHOT'
 
 sourceCompatibility = 1.8
