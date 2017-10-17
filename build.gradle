@@ -5,7 +5,8 @@ allprojects {
 	apply plugin: 'maven-publish'
 	apply plugin: "com.jfrog.artifactory"
 	version = '1.0.1-RELEASE'
-	group = 'com.ceiba'
+	artifactId = 'prueba'
+	artifactID
 }
 
 sourceCompatibility = 1.8
