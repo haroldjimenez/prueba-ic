@@ -6,7 +6,7 @@ allprojects {
 	apply plugin: "com.jfrog.artifactory"
 	version = '1.0.1-SNAPSHOT'
 	artifactId = 'prueba'
-	artifactID
+
 }
 
 sourceCompatibility = 1.8
